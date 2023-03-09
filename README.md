@@ -230,28 +230,21 @@
 
 - Define los mails que se enviaran luego de que el formulario se procese de manera satisfactoria
 - Pueden enviarse tantos mails como se deseen
-- El tag "recipient" define el destinatorio del correo. Permite ingresar una referencia a un control del formulario o una casilla harcodeada
-- El cuerpo del mail esta formado por 2 parrafos y/o una tabla de datos
-- La tabla de datos permite mostrar campos "input" que fueron llenados por el usuario en el formulario
+- El tag "receiver" define el destinatorio del correo. Permite ingresar una referencia a un control del formulario o una casilla harcodeada
+
 
 ### ***Ejemplo de Uso***
 
 ~~~
 "sendEmails" : [
-    {
-      "recipient" : "CorreoElectronico",
-      "title" : "BNA - Expoagro 2022",
-      "paragraph1" : "Ya hemos recibido la solicitud correspondiente a tu Pr&eacute;stamo Personal.",
-      "paragraph2" : "Gracias por usar el creador de formularios. "
-    },
-    {
-      "recipient" : "CorreoElecronicoFabricante",
-      "title" : "BNA - Expoagro 2022 para el fabricante",
-      "paragraph1" : "Ya hemos recibido la solicitud correspondiente a tu Pr&eacute;stamo Personal.",
-      "paragraph2" : "A continuaci&oacute;n adjuntamos los datos de la operaci&oacute;n",
-      "table" : "Nombre;Apellido;NroCuit;MontoSolicitado;"
+      {
+          "receiver" : "CorreoElectronico",
+          "title" : "BNA - Expoagro 2023",
+          "body" : {
+            "content" : "<p>Estimad@ {0} {1}</p><p>Desde el Banco Naci&oacute;n nos complace haber contado con tu visita en nuestro Stand. En ese sentido, te hacemos saber que hemos registrado la misma, a fin de adherir a las condiciones exclusivas diseñadas para <b>Expoagro 2023 &quot;Bonificaci&oacute;n de Tasa para el financiamiento de Maquinaria Nacional&quot;.<sup>i</sup></b></p><p>En los pr&oacute;ximos d&iacute;as ser&aacute;s contactado por la Sucursal seleccionada, para avanzar con tu solicitud.</p><p>No obstante lo anterior, te dejamos los datos de la <a href=https://www.bna.com.ar/Institucional/Sucursales>Sucursal</a> por cualquier duda o consulta que necesites realizar.</p><p><b>EN BANCO NACI&Oacute;N CADA EMPRESA CUENTA, CADA ARGENTIN&#64; CUENTA</b></p><p><small><b>Condiciones:</b> Sujeto a proceso de vinculaci&oacute;n y/o an&aacute;lisis crediticio del Banco, y a la aprobaci&oacute;n y/o regulaciones que sobre la materia pudieran corresponder, emanada de organismos de contralor. La presente no es una oferta crediticia. Las condiciones de la presente pueden ser modificadas unilateralmente por el Banco en cualquier momento y sin previo aviso.</p><p> La Bonificaci&oacute;n tiene un monto m&aacute;ximo por MiPyME de &#36;40.000.000 (cuarenta millones de pesos). El plazo m&aacute;ximo de contabilizaci&oacute;n es hasta el 31/05/2023, debiendo la MiPyME mantener un Paquete de Servicios Empresas (Campo, Empresas o Pyme), realizar la compra del bien por BNA Conecta (www.bnaconecta.com.ar) y figurar en nuestros registros como visitante de nuestro Stand.</small></p>",
+            "sql" : "SELECT Nombre, Apellido FROM FrmExpoAgro WHERE NroCuit = @NroCuit"
+          }
     }
-]
 ~~~
 
 ## 15. controls
